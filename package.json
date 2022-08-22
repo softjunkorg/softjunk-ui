@@ -1,6 +1,6 @@
 {
     "name": "softjunk-ui",
-    "version": "0.0.2",
+    "version": "0.0.2-2",
     "description": "Used with ReactJS on SoftJunk FiveM framework for UI developing on the major!",
     "keywords": [
         "reactjs",
@@ -38,7 +38,7 @@
         "watch": "rollup -c -w",
         "lint": "eslint .",
         "lint-and-fix": "eslint . --fix",
-        "prepare": "yarn build && yarn clean"
+        "prepare": "yarn clean && yarn build"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^22.0.2",

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { Global, CSSObject, css } from "@emotion/react";
 
 interface ResolutionsObject {
@@ -31,16 +31,22 @@ const DefaultResolutions = {
 
 const Resolutions: FC<ResolutionsProps> = props => {
     const { resolutions = DefaultResolutions } = props;
+    const styles = useMemo(
+        () =>
+            Object.entries(resolutions)
+                .map(value => {
+                    const [width, height] = value[0].split(".");
+                    const key = `@media only screen and (min-width: ${width}px) and (min-height: ${height}px)`;
+                    return `${key} { body { ${css(value[1]).styles} } }`;
+                })
+                .join("\n\n"),
+        [resolutions],
+    );
+
     return (
         <Global
             styles={css`
-                ${Object.entries(resolutions)
-                    .map(value => {
-                        const [width, height] = value[0].split(".");
-                        const key = `@media only screen and (min-width: ${width}px) and (min-height: ${height}px)`;
-                        return `${key} { body { ${css(value[1])} } }`;
-                    })
-                    .join("\n\n")}
+                ${styles}
             `}
         />
     );
