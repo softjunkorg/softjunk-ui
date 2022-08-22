@@ -2,14 +2,16 @@
     "compilerOptions": {
         "target": "es5",
         "module": "esnext",
-        "jsx": "react-jsx",
-        "sourceMap": false,
+        "jsx": "react",
+        "outDir": "dist",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
         "declaration": true,
-        "resolveJsonModule": true
+        "allowJs": true,
+        "emitDeclarationOnly": true
     },
     "include": ["src/*"]
 }

@@ -1,7 +1,11 @@
-import { FC } from "react";
-import { NuiProps } from "./types";
+import React, { FC, ReactNode } from "react";
 
-const Nui: FC<NuiProps> = (props) => {
+interface NuiProps {
+    show: boolean;
+    children?: ReactNode;
+}
+
+const Nui: FC<NuiProps> = props => {
     const { show, children } = props;
     return <div style={{ display: show ? "block" : "none" }}>{children}</div>;
 };
